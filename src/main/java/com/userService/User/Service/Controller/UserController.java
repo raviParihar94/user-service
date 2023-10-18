@@ -26,11 +26,9 @@ public class UserController {
 
     // get User by ID
     @GetMapping("/{userID}")
-
     public  ResponseEntity<User> getSingleUserByID( @PathVariable  Integer userId){
         User userByID = userService.getUserByID(userId);
         return ResponseEntity.ok(userByID);
-
     }
 
     // all users
