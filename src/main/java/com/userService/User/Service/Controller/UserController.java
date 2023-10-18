@@ -37,8 +37,8 @@ public class UserController {
         return ResponseEntity.ok(allUser);
     }
 
-    // update user
+    // todo update user
 
 
-    // delete user
+    // todo  delete user
 }
