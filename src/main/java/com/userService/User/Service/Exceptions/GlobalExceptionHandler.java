@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResource> handleResourceNotFoundException( ResourceNotFoundException ex){
 
         String messge = ex.getMessage();
-        ApiResource resp =  ApiResource.builder().message(messge).success(true).build();
-        return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
+        ApiResource resp =  ApiResource.builder().message(messge).success(true).status(HttpStatus.NOT_FOUND).build();
+        return new ResponseEntity<ApiResource>(resp, HttpStatus.NOT_FOUND);
     }
 }

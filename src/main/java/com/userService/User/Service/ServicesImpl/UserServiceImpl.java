@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     @Override
     public User saveUser(User user) {
-       Integer userID = Integer.parseInt( UUID.randomUUID().toString());
+       String userID = UUID.randomUUID().toString();
        user.setUserID(userID);
        return userRepository.save(user);
     }
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByID(Integer userID) {
+    public User getUserByID(String userID) {
         User user = userRepository.findById(userID).orElseThrow( ()->new ResourceNotFoundException("User With UserID " + userID +" is Not Found !!"));
 
         return user;
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserByID(Integer userID) {
+    public void deleteUserByID(String userID) {
 
     }
 
     @Override
-    public User updateUserByID(Integer userID) {
+    public User updateUserByID(String userID) {
         return null;
     }
 }

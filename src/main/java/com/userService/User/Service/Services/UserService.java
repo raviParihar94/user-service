@@ -13,10 +13,10 @@ public interface UserService {
 
    List<User> getAllUser();
 
-   User getUserByID(Integer userID);
+   User getUserByID(String userID);
 
-   void deleteUserByID( Integer userID);
+   void deleteUserByID( String userID);
 
-   User updateUserByID(Integer userID);
+   User updateUserByID(String userID);
 
 }
