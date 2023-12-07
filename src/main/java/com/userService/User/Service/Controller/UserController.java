@@ -13,17 +13,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
-    UserService userService;
 
-    // create User
+    UserService userService;
+    /*Constructor Injection */
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    /*  // create User*/
     @PostMapping("/saveUser")
     public ResponseEntity<User> createUser( @RequestBody  User user){
         User user1 = userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
 
-    // get User by ID
+    /*get User by ID*/
     @GetMapping("/{userID}")
     public  ResponseEntity<User> getSingleUserByID( @PathVariable  String userID){
         User userByID = userService.getUserByID(userID);
@@ -31,13 +35,19 @@ public class UserController {
     }
 
     // all users
+    @GetMapping("/allUsers")
     public  ResponseEntity<List<User>> getAllUsers(){
         List<User> allUser = userService.getAllUser();
         return ResponseEntity.ok(allUser);
     }
 
-    // todo update user
+    /*todo update user*/
 
 
-    // todo  delete user
+    /* todo  delete user*/
+    @DeleteMapping("/delete/{userID}")
+    public ResponseEntity<String> deleteUserByID(@RequestParam ("userID") String userID ){
+        userService.deleteUserByID(userID);
+        return  ResponseEntity.ok("User Deleted SuccessFully !!!");
+    }
 }
